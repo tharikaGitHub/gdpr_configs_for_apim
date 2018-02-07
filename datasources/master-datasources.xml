@@ -19,7 +19,7 @@
 <datasources-configuration>
     <datasources>
         <datasource>
-            <name>identity</name>
+            <name>amdb</name>
             <description>The datasource used for api manager AM_DB</description>
             <definition type="RDBMS">
                 <configuration>
