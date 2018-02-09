@@ -21,41 +21,19 @@
 <patterns xmlns="patterns.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="patterns.xsd">
 
-    <pattern key="pattern1">
-        <detectPattern>(.)*${userstoreDomain}(/{0}|/{1})${username}@${tenantDomain}(.)*</detectPattern>
-        <replacePattern>${username}@${tenantDomain}</replacePattern>
-    </pattern>
+      <pattern key="pattern1">
+          <detectPattern>(.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged(\s)*in(\s)*at)(.)*</detectPattern>
+          <replacePattern>${username}</replacePattern>
+      </pattern>
 
-    <pattern key="pattern2">
-        <detectPattern>(.)*${userstoreDomain}(/{0}|/{1})${username}(\s)*\[${tenantId}\](.)*</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
+      <pattern key="pattern2">
+          <detectPattern>(.)*(Initializing API:)(.)*${username}</detectPattern>
+          <replacePattern>${username}</replacePattern>
+      </pattern>
 
-    <pattern key="pattern3">
-        <detectPattern>(.)*${userstoreDomain}(/{0}|/{1})${username}(.)*${tenantDomain}(.)*</detectPattern>
-        <replacePattern>${username}@${tenantDomain}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern4">
-        <detectPattern>
-            (.)*(AuthenticatedUser|LoggedOutUser)(.)*${userstoreDomain}(/{0}|/{1})${username}(.)*(AuthenticatedUserTenantDomain|LoggedOutUserTenantDomain)(.)*${tenantDomain}(.)*
-        </detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern5">
-        <detectPattern>(.)*user(\s)*:(.)*${userstoreDomain}(/{0}|/{1})${username}(.)*in(\s)tenant(\s)*:(.)*${tenantDomain}(.)*</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern6">
-        <detectPattern>(.)*User,(.)*${username}@${tenantDomain}(.)*is(\s)not(\s)exist(\s)in(.)*${userstoreDomain}(.)*</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern6">
-        <detectPattern>(.)*${username}(.)*</detectPattern>
-        <replacePattern></replacePattern>
-    </pattern>
+      <pattern key="pattern3">
+          <detectPattern>(.)*(API :)(.)*${username}(.)*(was added to the Synapse configuration successfully)</detectPattern>
+          <replacePattern>${username}</replacePattern>
+      </pattern>
 
 </patterns>

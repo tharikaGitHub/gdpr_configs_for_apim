@@ -21,19 +21,9 @@
 <patterns xmlns="patterns.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="patterns.xsd">
 
-    <pattern key="pattern1">
-        <detectPattern>(.)*(Initiator : )(.)*${username}</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern2">
-        <detectPattern>(.)*(performedBy)(.)*${username}</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
-
-    <pattern key="pattern3">
-        <detectPattern>(.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged(\s)*in(\s)*at)(.)*</detectPattern>
-        <replacePattern>${username}</replacePattern>
-    </pattern>
+      <pattern key="pattern1">
+          <detectPattern>(.)*${username}(.)*</detectPattern>
+          <replacePattern>${username}</replacePattern>
+      </pattern>
 
 </patterns>
