@@ -1,6 +1,7 @@
 {
   "processors" : [
-    "log-file"
+    "log-file",
+    "rdbms"
   ],
   "directories": [
     

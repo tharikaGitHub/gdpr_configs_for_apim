@@ -19,8 +19,8 @@
 <datasources-configuration>
     <datasources>
         <datasource>
-            <name>amdb</name>
-            <description>The datasource used for api manager AM_DB</description>
+            <name>idn</name>
+            <description>The datasource used for identity tables</description>
             <definition type="RDBMS">
                 <configuration>
                     <url>jdbc:h2:/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/database/WSO2AM_DB;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
