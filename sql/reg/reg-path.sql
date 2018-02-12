@@ -1,0 +1,3 @@
+UPDATE REG_PATH
+SET REG_PATH_VALUE = REPLACE(REG_PATH_VALUE, `username`, `pseudonym`)
+WHERE REG_TENANT_ID = `tenant_id`

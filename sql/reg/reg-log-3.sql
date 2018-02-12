@@ -1,0 +1,3 @@
+UPDATE REG_LOG
+SET REG_ACTION_DATA = REPLACE(REG_ACTION_DATA, `username`, `pseudonym`)
+WHERE REG_TENANT_ID = `tenant_id`

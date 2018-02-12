@@ -1,0 +1,4 @@
+UPDATE REG_RESOURCE_HISTORY
+SET REG_LAST_UPDATOR = `pseudonym`
+WHERE REG_LAST_UPDATOR = `username`
+      AND REG_TENANT_ID = `tenant_id`

@@ -1,0 +1,3 @@
+UPDATE REG_RESOURCE_HISTORY
+SET REG_NAME = REPLACE(REG_NAME, `username`, `pseudonym`) 
+WHERE REG_TENANT_ID = `tenant_id`
