@@ -22,18 +22,18 @@
             xsi:schemaLocation="patterns.xsd">
 
       <pattern key="pattern1">
-          <detectPattern>(.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged(\s)*in(\s)*at)(.)*</detectPattern>
-          <replacePattern>${username}</replacePattern>
+        <detectPattern>(.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged in at)</detectPattern>
+        <replacePattern>${username}@${tenantDomain}</replacePattern>
       </pattern>
 
       <pattern key="pattern2">
-          <detectPattern>(.)*(Initializing API:)(.)*${username}</detectPattern>
-          <replacePattern>${username}</replacePattern>
+          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(--)(.)*(was added to the Synapse configuration successfully)</detectPattern>
+          <replacePattern>${username}(--)</replacePattern>
       </pattern>
 
       <pattern key="pattern3">
-          <detectPattern>(.)*(API :)(.)*${username}(.)*(was added to the Synapse configuration successfully)</detectPattern>
-          <replacePattern>${username}</replacePattern>
+          <detectPattern>(TID: )\[${tenantId}\](.)*(Initializing API: )${username}(--)</detectPattern>
+          <replacePattern>${username}(--)</replacePattern>
       </pattern>
 
 </patterns>

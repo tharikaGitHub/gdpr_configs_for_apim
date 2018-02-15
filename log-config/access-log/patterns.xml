@@ -23,7 +23,17 @@
 
       <pattern key="pattern1">
           <detectPattern>(.)*[(GET)|(POST)|(PUT)|(DELETE)|(PATCH)|[OPTIONS]|(TRACE)](.)*(provider=)${username}</detectPattern>
-          <replacePattern>${username}</replacePattern>
+          <replacePattern>(provider=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern2">
+          <detectPattern>(.)*[(GET)|(POST)|(PUT)|(DELETE)|(PATCH)|[OPTIONS]|(TRACE)](.)*(/)${username}(/)</detectPattern>
+          <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern3">
+          <detectPattern>(.)*[(GET)|(POST)|(PUT)|(DELETE)|(PATCH)|[OPTIONS]|(TRACE)](.)*(parentId=)${username}</detectPattern>
+          <replacePattern>(parentId=)${username}</replacePattern>
       </pattern>
 
 </patterns>

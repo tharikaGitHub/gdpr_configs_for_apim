@@ -26,41 +26,6 @@
       "log-file-name-regex" : "http_access_(.)*log"
     },
     {
-      "dir": "log-config/gateway-log",
-      "type": "log-file",
-      "processor" : "log-file",
-      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
-      "log-file-name-regex" : "wso2-apigw-(.)*log"
-    },
-    {
-      "dir": "log-config/trace-log",
-      "type": "log-file",
-      "processor" : "log-file",
-      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
-      "log-file-name-regex" : "wso2-cep-trace.log"
-    },
-    {
-      "dir": "log-config/carbon-trace-log",
-      "type": "log-file",
-      "processor" : "log-file",
-      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
-      "log-file-name-regex" : "wso2carbon-trace-messages.log"
-    },
-    {
-      "dir": "log-config/tm-out-log",
-      "type": "log-file",
-      "processor" : "log-file",
-      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
-      "log-file-name-regex" : "tm.out"
-    },
-    {
-      "dir": "log-config/patches-log",
-      "type": "log-file",
-      "processor" : "log-file",
-      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
-      "log-file-name-regex" : "patches.log"
-    },
-    {
       "dir": "sql",
       "type": "rdbms",
       "processor" : "rdbms"
