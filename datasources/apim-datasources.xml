@@ -19,11 +19,14 @@
 <datasources-configuration>
     <datasources>
         <datasource>
-            <name>am</name>
-            <description>The datasource used for api manager tables</description>
+            <name>WSO2AM_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2AM_DB</name>
+            </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:h2:/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/database/WSO2AM_DB;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <url>jdbc:h2:/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/database/WSO2AM_DB;DB_CLOSE_ON_EXIT=FALSE</url>
                     <username>wso2carbon</username>
                     <password>wso2carbon</password>
                     <driverClassName>org.h2.Driver</driverClassName>
