@@ -46,6 +46,11 @@
         <replacePattern>(\\"provider\\":\\")${username}(\\")</replacePattern>
     </pattern>
 
+    <pattern key="pattern5">
+        <detectPattern>(.)*(\\"provider\\":\\")${username}(-AT-)${tenantDomain}(\\")</detectPattern>
+        <replacePattern>(\\"provider\\":\\")${username}(-AT-)${tenantDomain}(\\")</replacePattern>
+    </pattern>
+
     <pattern key="pattern6">
       <detectPattern>(.)*${username}@${tenantDomain}(\s)*(\[)${tenantId}(\])(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)(.)*(from IP address)</detectPattern>
       <replacePattern>${username}(.)*</replacePattern>

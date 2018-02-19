@@ -34,7 +34,7 @@
       </pattern>
 
       <pattern key="pattern2">
-          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(--)(.)*(was added to the Synapse configuration successfully)</detectPattern>
+          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(--)(.)*(the Synapse configuration successfully)</detectPattern>
           <replacePattern>${username}(--)</replacePattern>
       </pattern>
 
@@ -44,7 +44,7 @@
       </pattern>
 
       <pattern key="pattern4">
-          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(-AT-)${tenantDomain}(--)(.)*(was added to the Synapse configuration successfully)</detectPattern>
+          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(-AT-)${tenantDomain}(--)(.)*(the Synapse configuration successfully)</detectPattern>
           <replacePattern>${username}(-AT-)${tenantDomain}</replacePattern>
       </pattern>
 
@@ -101,6 +101,11 @@
       <pattern key="pattern15">
         <detectPattern>(TID: )\[${tenantId}\](.)*(Password reset is successful for the user \[)(\s)*${username}(\s)*(\])</detectPattern>
         <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern15">
+        <detectPattern>(TID: )\[${tenantId}\](.)*${username}@${tenantDomain}(\s)\[${tenantId}\](\s)\[AM\]</detectPattern>
+        <replacePattern>${username}@${tenantDomain}</replacePattern>
       </pattern>
 
       <!-- Error logs -->
@@ -189,16 +194,6 @@
         <replacePattern>${username}</replacePattern>
       </pattern>
 
-      <pattern key="pattern6">
-        <detectPattern>(.)*${username}@${tenantDomain}(\s)*(\[)${tenantId}(\])(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)(.)*(from IP address)</detectPattern>
-        <replacePattern>${username}(.)*</replacePattern>
-      </pattern>
-
-      <pattern key="pattern7">
-        <detectPattern>(.)*${username}@${tenantDomain}(\s)*(\[)${tenantId}(\])(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)</detectPattern>
-        <replacePattern>${username}</replacePattern>
-      </pattern>
-
       <pattern key="pattern33">
         <detectPattern>(TID: )\[${tenantId}\](.)*(Could not load Subscriber records for:)(\s)*${username}</detectPattern>
         <replacePattern>${username}</replacePattern>
@@ -230,51 +225,66 @@
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to get API from :)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Failed to get API from :)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to get API from registry on path of :)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Failed to get API from registry on path of :)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to check existence of the document :)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Failed to check existence of the document :)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Unable to find the API:)(\s)*${username}(-)(.)*(in the database)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Unable to find the API:)(\s)*${username}(-)(.)*(in the database)</detectPattern>
         <replacePattern>${username}(-)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Error while locating API:)(\s)*${username}(-)(.)*(from the database)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while locating API:)(\s)*${username}(-)(.)*(from the database)</detectPattern>
         <replacePattern>${username}(-)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Invalid APIId :)(\s)*${username}(-)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Invalid APIId :)(\s)*${username}(-)</detectPattern>
         <replacePattern>${username}(-)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No sequences were found on the resource path:)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(No sequences were found on the resource path:)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(An error occurred while determining the latest version of the resource at the given path:)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(An error occurred while determining the latest version of the resource at the given path:)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
       <pattern key="pattern34">
-        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No matching scope validation logic found for app request with path:)(.)*(/)${username}(/)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*(No matching scope validation logic found for app request with path:)(.)*(/)${username}(/)</detectPattern>
         <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Destroying API:)(\s)${username}(-)</detectPattern>
+        <replacePattern>${username}(-)</replacePattern>
       </pattern>
 
       <!-- Warn logs -->
+
+      <pattern key="pattern6">
+        <detectPattern>(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)(.)*(from IP address)</detectPattern>
+        <replacePattern>${username}(.)*</replacePattern>
+      </pattern>
+
+      <pattern key="pattern7">
+        <detectPattern>(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
 
       <pattern key="pattern33">
         <detectPattern>(TID: )\[${tenantId}\](.)*(WARN)(.)*(Invalid code provided to validate by user :)(\s)*${username}</detectPattern>

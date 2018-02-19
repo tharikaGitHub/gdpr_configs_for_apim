@@ -32,6 +32,11 @@
       </pattern>
 
       <pattern key="pattern3">
+          <detectPattern>(.)*[(GET)|(POST)|(PUT)|(DELETE)|(PATCH)|[OPTIONS]|(TRACE)](.)*(/)${username}(-AT-)${tenantDomain}(/)</detectPattern>
+          <replacePattern>(/)${username}(-AT-)${tenantDomain}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern4">
           <detectPattern>(.)*[(GET)|(POST)|(PUT)|(DELETE)|(PATCH)|[OPTIONS]|(TRACE)](.)*(parentId=)${username}</detectPattern>
           <replacePattern>(parentId=)${username}</replacePattern>
       </pattern>
