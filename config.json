@@ -26,6 +26,13 @@
       "log-file-name-regex" : "http_access_(.)*log"
     },
     {
+      "dir": "log-config/wso2-apigw-log",
+      "type": "log-file",
+      "processor" : "log-file",
+      "log-file-path" : "/home/tharika/APIM-2.2.0-Updates/wso2am-2.2.0-SNAPSHOT/repository/logs",
+      "log-file-name-regex" : "wso2-apigw-(.)*log"
+    },
+    {
       "dir": "sql",
       "type": "rdbms",
       "processor" : "rdbms"

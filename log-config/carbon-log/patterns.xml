@@ -21,8 +21,15 @@
 <patterns xmlns="patterns.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="patterns.xsd">
 
+      <!-- Info logs -->
+
       <pattern key="pattern1">
-        <detectPattern>(.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged in at)</detectPattern>
+        <detectPattern>(TID: )\[${tenantId}\](.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged in at)(.)*(from IP address)</detectPattern>
+        <replacePattern>${username}@${tenantDomain}(.)*</replacePattern>
+      </pattern>
+
+      <pattern key="pattern2">
+        <detectPattern>(TID: )\[${tenantId}\](.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged in at)</detectPattern>
         <replacePattern>${username}@${tenantDomain}</replacePattern>
       </pattern>
 
@@ -34,6 +41,586 @@
       <pattern key="pattern3">
           <detectPattern>(TID: )\[${tenantId}\](.)*(Initializing API: )${username}(--)</detectPattern>
           <replacePattern>${username}(--)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern4">
+          <detectPattern>(TID: )\[${tenantId}\](.)*(API : )${username}(-AT-)${tenantDomain}(--)(.)*(was added to the Synapse configuration successfully)</detectPattern>
+          <replacePattern>${username}(-AT-)${tenantDomain}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern5">
+          <detectPattern>(TID: )\[${tenantId}\](.)*(Initializing API: )${username}(-AT-)${tenantDomain}(--)</detectPattern>
+          <replacePattern>${username}(-AT-)${tenantDomain}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern6">
+        <detectPattern>(TID: )\[${tenantId}\](.)*${username}@${tenantDomain}(\s)*\[${tenantId}\](')(\s)*(logged out at)</detectPattern>
+        <replacePattern>${username}@${tenantDomain}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern7">
+        <detectPattern>(TID: )\[${tenantId}\](.)*${username}@${tenantDomain}(\s)*(successfully logged out)</detectPattern>
+        <replacePattern>${username}@${tenantDomain}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern8">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Successfully revoked all tokens issued for user=)${username}(for application)</detectPattern>
+        <replacePattern>(user=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern9">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Mutual Auth authentication success for user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern10">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Getting recovery notification data for user \[)(\s)*${username}(\s)*(\])</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern11">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Recovery notification data retrieved successfully for the user \[)(\s)*${username}(\s)*(\] with email \[)</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern12">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Verifying password reset confirmation code of the user \[)(\s)*${username}(\s)*(\])</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern13">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Confirmation code of the user \[)(\s)*${username}(\s)*(\] verified successfully)</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern14">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Resetting the password of user \[)(\s)*${username}(\s)*(\])</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <pattern key="pattern15">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Password reset is successful for the user \[)(\s)*${username}(\s)*(\])</detectPattern>
+        <replacePattern>(\[)(\s)*${username}(\s)*(\])</replacePattern>
+      </pattern>
+
+      <!-- Error logs -->
+      <pattern key="pattern16">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(user)(\s)*${username}(\s)*(failed to access the API)(.)*(due to an authorization failure)</detectPattern>
+        <replacePattern>(user)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern17">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while adding the subscriber)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern18">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Failed to get APIs for subscriber:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern19">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Failed to check if user\()${username}(\) has subscribed to)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern20">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while checking user existence for)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern21">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(User store exception occurred for user)${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern22">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Couldn't retrieve registry for User)(\s)*${username}(\s)*(Tenant)(\s)*${tenantDomain}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern23">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Cannot access user profile of :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern24">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(User does not exist. Unable to approve user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern25">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while cleaning up workflow task for the user:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern26">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while getting active access tokens of user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern27">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(User)(\s)*${username}(\s)*(does not have any of subscribe/create/publish privileges to create an OAuth app)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern28">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while getting subscribers of the provider:)(\s)*${username}(\s)*(and API:)</detectPattern>
+        <replacePattern>(provider:)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern29">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while updating permissions for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern30">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Application)(.)*(does not exist for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern31">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while retrieving APIs by)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern32">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Could not get registry of user)(\s)*${username}(\s)*(of tenant \(id\))(\s)*${tenantId}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern6">
+        <detectPattern>(.)*${username}@${tenantDomain}(\s)*(\[)${tenantId}(\])(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)(.)*(from IP address)</detectPattern>
+        <replacePattern>${username}(.)*</replacePattern>
+      </pattern>
+
+      <pattern key="pattern7">
+        <detectPattern>(.)*${username}@${tenantDomain}(\s)*(\[)${tenantId}(\])(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Could not load Subscriber records for:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while retrieving the primaryLogin name using secondary login name :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Authentication failed for user:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error occurred while getting a cookie for  user :)(\s)*${username}(\s)*(Received Response :)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while getting a cookie for  user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(Error while checking if user)(\s)*${username}(\s)*(has permission to login to admin portal)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to get API from :)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to get API from registry on path of :)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Failed to check existence of the document :)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Unable to find the API:)(\s)*${username}(-)(.)*(in the database)</detectPattern>
+        <replacePattern>${username}(-)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Error while locating API:)(\s)*${username}(-)(.)*(from the database)</detectPattern>
+        <replacePattern>${username}(-)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Invalid APIId :)(\s)*${username}(-)</detectPattern>
+        <replacePattern>${username}(-)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No sequences were found on the resource path:)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(An error occurred while determining the latest version of the resource at the given path:)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No matching scope validation logic found for app request with path:)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <!-- Warn logs -->
+
+      <pattern key="pattern33">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(WARN)(.)*(Invalid code provided to validate by user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(WARN)(.)*(Expired code provided to validate by user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <!-- Debug logs-->
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User name taken from user info endpoint :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Throttle by Application)(\s)*${username}(_)(.)*</detectPattern>
+        <replacePattern>${username}(_)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Inbound OAuth token request from client to gateway:)(.)*(userName=)${username}</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Outbound OAuth token response from gateway to client:)(.)*(userName=)${username}</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Inbound API call from client to gateway:)(.)*(userName=)${username}</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Outbound API call from gateway to client:)(.)*(userName=)${username}</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Authenticated API, authentication response relieved:)(.)*(userName=)${username}(.)*(elapsedTimeInMilliseconds=)</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Call to API gateway :)(.)*(userName=)${username}(.)*(elapsedTimeInMilliseconds=)</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Request blocked as it violates defined blocking conditions, for API:)(.)*(,user:)${username}</detectPattern>
+        <replacePattern>(user:)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Publisher access control restriction is not enabled. Hence the API)(\s)*${username}(-)(.)*(can be editable and viewable by all the API publishers and creators.)</detectPattern>
+        <replacePattern>(API)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Resource does not exist in the path :)(.)*(/)${username}(/)(.)*(this can happen if this in the)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API in the path)(.)*(/)${username}(/)(.)*(does not have any access control restriction)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(has roles)</detectPattern>
+        <replacePattern>(User)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API)(\s)*${username}(-)(.)*(cannot be accessed by user ')${username}(')</detectPattern>
+        <replacePattern>(')${username}(')</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Wsdl)(.)*(/)${username}(/)(.)*(deleted successfully)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API Name: )(.)*(API Version)(.)*(Subscription Status:)(.)*(subscribe by)(\s)*${username}(.)*(for app)</detectPattern>
+        <replacePattern>(subscribe by)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API Name: )(.)*(API Version)(.)*(subscription removed from app)(.)*(by)${username}</detectPattern>
+        <replacePattern>(by)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Successfully updated the Application:)(\s)*${username}(_)(.)*(in the database.)</detectPattern>
+        <replacePattern>(\s)*${username}(_)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No more APIs from the provider)(\s)*${username}(\s)*(found.)(\s)*(Removing provider collection from registry)</detectPattern>
+        <replacePattern>(\s)*${username}(\s)*</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Searching for:)(.)*(User:)(\s)*${username}(.)*(ApplicationName:)(.)*(Tenant ID:)(\s)*${tenantId}</detectPattern>
+        <replacePattern>(User:)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Saved sequence for type)(.)*(for api:)${username}</detectPattern>
+        <replacePattern>(api:)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(The sequence file with the name)(.)*(already exists in the registry path)(.)*(/)${username}(/)(.)*</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Adding sequence file with the name)(.)*(to the registry path)(.)*(/)${username}(/)(.)*</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Adding to user store user :)${username}</detectPattern>
+        <replacePattern>(user :)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Remove the rejected user :)${username}</detectPattern>
+        <replacePattern>(user :)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Adding roles to )${username}(in )${tenantDomain}(\s)(Domain)</detectPattern>
+        <replacePattern>(to )${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Adding Subscriber role to)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Cache miss for user claims. Username :)${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No claim values for user :)(\s)*${userstoreDomain}(/)${username}</detectPattern>
+        <replacePattern>${userstoreDomain}(/)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(No active tokens found for the user)(\s)*${username}</detectPattern>
+        <replacePattern>(user)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Found)(.)*(active tokens of the user)(\s)*${username}</detectPattern>
+        <replacePattern>(user)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Avoided removing the default app :)(\s)*${username}(_)</detectPattern>
+        <replacePattern>${username}(_)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Removing Service Provider with name :)(\s)*${username}(_)</detectPattern>
+        <replacePattern>${username}(_)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Service Provider Name Updated to :)(\s)*${username}(_)</detectPattern>
+        <replacePattern>${username}(_)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(OAuth token response from keyManager to gateway:)(.)*(userName=)${username}</detectPattern>
+        <replacePattern>(userName=)${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getAPIUsageByResourcePath for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getAPIUsageByDestination for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getAPIUsageByUser for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getSubscriberCountByAPIs for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getProviderAPIVersionUserUsage for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getAPIResponseFaultCount for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getProviderAPIFirstAccessTime for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getExecutionTimeByAPI for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(getExecutionTimeByMediation for :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Error while authenticating user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(session check for)${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Checking 'subscribe' permission for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(does not have subscriber permission)</detectPattern>
+        <replacePattern>(User)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Checking 'publish' permission for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(does not have 'api publish' permission)</detectPattern>
+        <replacePattern>(User)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Checking 'api create' permission for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(does not have 'api create' permission)</detectPattern>
+        <replacePattern>(User)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(.)*(does not have admin permission \()(.)*(hence provider \()${username}</detectPattern>
+        <replacePattern>(provider \()${username}(\))</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(does not have admin permission \()(.)*(\) overridden with current user \()${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Scope retrieval request received from the)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Roles of the user)(\s)*${username}(\s)*(are)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(User)(\s)*${username}(\s)*(does not have subscribe permission)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Subscriber)(\s)*${username}(\s)*(added to AM_SUBSCRIBER database)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Mutual authentication failed for invalid user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Logged in user is)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Name of authenticated user from SAML response)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Resource)(.)*(not found at)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(CustomAPIIndexer is currently indexing the api at path)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API at)(.)*(/)${username}(/)(did not have property :)(.)*(hence adding the null value for that API resource.)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(API at)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Number of REST resources for)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
+      </pattern>
+
+      <pattern key="pattern34">
+        <detectPattern>(TID: )\[${tenantId}\](.)*(DEBUG)(.)*(Api sequence content for)(.)*(/)${username}(/)</detectPattern>
+        <replacePattern>(/)${username}(/)</replacePattern>
       </pattern>
 
 </patterns>

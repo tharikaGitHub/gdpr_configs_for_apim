@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ~  Copyright (c) 2018, WSO2 Inc. (http://wso2.com) All Rights Reserved.
+  ~
+  ~  WSO2 Inc. licenses this file to you under the Apache License,
+  ~  Version 2.0 (the "License"); you may not use this file except
+  ~  in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+
+-->
+<patterns xmlns="patterns.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="patterns.xsd">
+
+      <pattern key="pattern1">
+        <detectPattern>(.)*(user)(\s)*${username}(\s)*(failed to access the API)(.)*(due to an authorization failure)</detectPattern>
+        <replacePattern>(user)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern2">
+        <detectPattern>(.)*(Error while adding the subscriber)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern3">
+        <detectPattern>(.)*(Failed to get APIs for subscriber:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern4">
+        <detectPattern>(.)*(Failed to check if user\()${username}(\) has subscribed to)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern5">
+        <detectPattern>(.)*(Error while checking user existence for)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern6">
+        <detectPattern>(.)*(User store exception occurred for user)${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern7">
+        <detectPattern>(.)*(Couldn't retrieve registry for User)(\s)*${username}(\s)*(Tenant)(\s)*${tenantDomain}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern8">
+        <detectPattern>(.)*(Cannot access user profile of :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern9">
+        <detectPattern>(.)*(User does not exist. Unable to approve user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern10">
+        <detectPattern>(.)*(Error while cleaning up workflow task for the user:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern11">
+        <detectPattern>(.)*(Error while getting active access tokens of user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern12">
+        <detectPattern>(.)*(User)(\s)*${username}(\s)*(does not have any of subscribe/create/publish privileges to create an OAuth app)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern13">
+        <detectPattern>(.)*(Error while getting subscribers of the provider:)(\s)*${username}(\s)*(and API:)</detectPattern>
+        <replacePattern>(provider:)(\s)*${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern14">
+        <detectPattern>(.)*(Error while updating permissions for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern15">
+        <detectPattern>(.)*(Application)(.)*(does not exist for user)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern16">
+        <detectPattern>(.)*(Error while retrieving APIs by)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern17">
+        <detectPattern>(.)*(Could not get registry of user)(\s)*${username}(\s)*(of tenant \(id\))(\s)*${tenantId}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern18">
+        <detectPattern>(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)(.)*(from IP address)</detectPattern>
+        <replacePattern>${username}(.)*</replacePattern>
+      </pattern>
+
+      <pattern key="pattern19">
+        <detectPattern>(.)*(WARN)(.)*(Failed Administrator login attempt ')${username}(\[)${tenantId}(\]' at)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern20">
+        <detectPattern>(.)*(Could not load Subscriber records for:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern21">
+        <detectPattern>(.)*(Error while retrieving the primaryLogin name using secondary login name :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern22">
+        <detectPattern>(.)*(Authentication failed for user:)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern23">
+        <detectPattern>(.)*(Error occurred while getting a cookie for  user :)(\s)*${username}(\s)*(Received Response :)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern24">
+        <detectPattern>(.)*(Error while getting a cookie for  user :)(\s)*${username}</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+      <pattern key="pattern25">
+        <detectPattern>(.)*(Error while checking if user)(\s)*${username}(\s)*(has permission to login to admin portal)</detectPattern>
+        <replacePattern>${username}</replacePattern>
+      </pattern>
+
+</patterns>
