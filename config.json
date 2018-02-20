@@ -1,7 +1,8 @@
 {
   "processors" : [
     "log-file",
-    "rdbms"
+    "rdbms",
+    "apim-datasources"
   ],
   "directories": [
     {
@@ -36,6 +37,11 @@
       "dir": "sql",
       "type": "rdbms",
       "processor" : "rdbms"
+    },
+    {
+      "dir": "",
+      "type": "apim-datasources",
+      "processor" : "apim-datasources"
     }
   ],
   "extensions": [
@@ -50,6 +56,11 @@
         "um": "WSO2_CARBON_DB"
         }
       ]
+    },
+    {
+      "dir": "datasources",
+      "type": "datasource",
+      "processor" : "apim-datasources"
     }
   ]
 }
